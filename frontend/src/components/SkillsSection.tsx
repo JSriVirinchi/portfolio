@@ -6,12 +6,23 @@ interface Props {
   skills: Skills;
 }
 
+const ORDER: Array<keyof Skills> = ['languages', 'frameworks', 'tools', 'cloud'];
+
 export function SkillsSection({ skills }: Props) {
-  const entries = useMemo(
-    () =>
-      (Object.entries(skills) as Array<[keyof Skills, SkillEntry[]]>).filter(([, list]) => list.length > 0),
-    [skills],
-  );
+  const entries = useMemo(() => {
+    const records = (Object.entries(skills) as Array<[keyof Skills, SkillEntry[]]>).filter(
+      ([, list]) => list.length > 0,
+    );
+
+    const prioritized = ORDER.flatMap((key) => {
+      const match = records.find(([category]) => category === key);
+      return match ? [match] : [];
+    });
+
+    const remainder = records.filter(([category]) => !ORDER.includes(category));
+
+    return [...prioritized, ...remainder];
+  }, [skills]);
 
   return (
     <section className="section" id="skills">

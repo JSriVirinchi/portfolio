@@ -1,9 +1,50 @@
-import { type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useGithubSearch } from '../hooks/useGithubSearch';
 import { SectionHeader } from './SectionHeader';
 
 export function GithubShowcase() {
   const { query, setQuery, results, loading, error } = useGithubSearch('');
+  const [viewportWidth, setViewportWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 0,
+  );
+  const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const columns = useMemo(() => {
+    if (viewportWidth >= 1024) return 3;
+    if (viewportWidth >= 720) return 2;
+    return 1;
+  }, [viewportWidth]);
+
+  const pageSize = Math.max(1, columns * 2);
+  const totalPages = Math.max(1, Math.ceil(results.length / pageSize) || 1);
+
+  useEffect(() => {
+    setPage(0);
+  }, [results, pageSize]);
+
+  const pageResults = useMemo(() => {
+    const start = page * pageSize;
+    return results.slice(start, start + pageSize);
+  }, [page, pageSize, results]);
+
+  const padCount = Math.max(0, pageSize - pageResults.length);
+  const placeholders = useMemo(
+    () => (padCount > 0 ? Array.from({ length: padCount }, (_, index) => index) : []),
+    [padCount],
+  );
+
+  const goToPrev = () => setPage((current) => Math.max(0, current - 1));
+  const goToNext = () => setPage((current) => Math.min(totalPages - 1, current + 1));
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,7 +73,7 @@ export function GithubShowcase() {
       {error && <p className="github-status error">{error}</p>}
       {!loading && !error && (
         <div className="github-grid">
-          {results.map((repo) => (
+          {pageResults.map((repo) => (
             <article key={repo.html_url} className="github-card">
               <header>
                 <a href={repo.html_url} target="_blank" rel="noreferrer">
@@ -58,6 +99,22 @@ export function GithubShowcase() {
               )}
             </article>
           ))}
+          {placeholders.map((value) => (
+            <article key={`placeholder-${page}-${value}`} className="github-card placeholder" aria-hidden="true" />
+          ))}
+        </div>
+      )}
+      {!loading && !error && results.length > pageSize && (
+        <div className="github-pagination">
+          <button type="button" onClick={goToPrev} disabled={page === 0}>
+            Previous
+          </button>
+          <span>
+            Page {page + 1} of {totalPages}
+          </span>
+          <button type="button" onClick={goToNext} disabled={page + 1 >= totalPages}>
+            Next
+          </button>
         </div>
       )}
     </section>

@@ -4,6 +4,7 @@
   font-weight: 400;
   color: #e8ecf7;
   background-color: #05060f;
+  --navbar-offset: 112px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

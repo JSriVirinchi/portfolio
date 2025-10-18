@@ -150,6 +150,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(135deg, rgba(26, 32, 66, 0.42), rgba(15, 21, 46, 0.7));
   overflow: hidden;
+  scroll-margin-top: var(--navbar-offset, 112px);
 }
 
 /* reveal transitions removed */
@@ -201,6 +202,7 @@ main {
   overflow: hidden;
   display: grid;
   gap: 1.5rem;
+  scroll-margin-top: var(--navbar-offset, 112px);
 }
 
 .hero-glow {
@@ -1449,6 +1451,40 @@ main {
   gap: 1.3rem;
 }
 
+.github-pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: rgba(200, 208, 244, 0.78);
+}
+
+.github-pagination button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 146, 216, 0.4);
+  background: rgba(10, 14, 32, 0.8);
+  color: #e5ebff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.github-pagination button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(155, 180, 255, 0.7);
+  background: rgba(15, 22, 48, 0.92);
+}
+
+.github-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .github-card {
   padding: 1.5rem;
   border-radius: 18px;
@@ -1457,6 +1493,13 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-height: 260px;
+}
+
+.github-card.placeholder {
+  visibility: hidden;
+  pointer-events: none;
+  border: none;
 }
 
 .github-card header {
@@ -1480,6 +1523,10 @@ main {
   margin: 0;
   font-size: 0.95rem;
   color: rgba(210, 218, 255, 0.78);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .github-card footer {
