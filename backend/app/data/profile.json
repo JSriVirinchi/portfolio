@@ -1,0 +1,172 @@
+{
+  "name": "Satya Sri Virinchi Junuthula",
+  "headline": "Software Development Engineer, AWS EC2 Auto Scaling",
+  "location": "Seattle, WA, USA",
+  "email": "virinchi.junuthula@gmail.com",
+  "phone": "+1-602-691-9735",
+  "linkedin": "https://linkedin.com/in/virinchi-junuthula-21734618a",
+  "github": "https://github.com/JSriVirinchi",
+  "resume": "https://drive.google.com/file/d/1qZYc6x7CtHNlfUDe06WqT66zfguqjFHh/view",
+  "summary": "Builder focused on resilient cloud-native experiences, currently crafting data-driven scaling workflows for AWS EC2 Auto Scaling. Passionate about purposeful UX, thoughtful automation, and bridging product goals with measurable engineering impact.",
+  "specialties": [
+    "Cloud-first frontends",
+    "Type-safe engineering",
+    "Scalable automation",
+    "Data informed UX"
+  ],
+  "experience": [
+    {
+      "company": "Amazon Web Services",
+      "title": "Software Development Engineer",
+      "location": "Seattle, WA",
+      "start": "Jul 2024",
+      "end": "Present",
+      "focus": "EC2 Auto Scaling console",
+      "highlights": [
+        "Shipped Bake Time and ODCR support across all AWS regions, aligning instance refresh flows with enterprise change controls.",
+        "Implemented attribute-based instance selection covering 15+ EC2 dimensions, driving a 20% adoption increase for stateful fleets.",
+        "Raised accessibility and observability for the AnyScale widget via CloudWatch dashboards, intuitive search, and policy automation.",
+        "Rolled strict null checks across the ASG console, eliminating 6000+ potential runtime defects while maintaining 90% coverage."        
+      ]
+    },
+    {
+      "company": "Amazon Robotics",
+      "title": "Software Development Engineer",
+      "location": "Boston, MA",
+      "start": "Jan 2024",
+      "end": "Jul 2024",
+      "focus": "Simulation tooling",
+      "highlights": [
+        "Built Concept Explorer dashboards to surface multi-account simulation health, unlocking 20% ops efficiency gains.",
+        "Delivered simulation lifecycle controls with auto-save, clone, and templating workflows, reducing setup time by 40%.",
+        "Designed accessible multi-format file workflows and end-to-end telemetry, shrinking performance investigation time by 30%."
+      ]
+    },
+    {
+      "company": "Quantiphi, Inc.",
+      "title": "Machine Learning Engineer",
+      "location": "Bengaluru, India",
+      "start": "Jul 2021",
+      "end": "Apr 2022",
+      "focus": "Conversational AI accelerators",
+      "highlights": [
+        "Crafted an appointment booking chatbot UX with GPT/BERT backed NLU, boosting successful scheduling by 90%.",
+        "Led ASR enablement for Fox Sports showcases, achieving 82% transcription accuracy with hybrid data synthesis."      ]
+    },
+    {
+      "company": "ReferralYogi Technologies",
+      "title": "Fullstack Web Developer",
+      "location": "Chennai, India",
+      "start": "Aug 2020",
+      "end": "Jan 2021",
+      "focus": "WhatsApp automation studio",
+      "highlights": [
+        "Launched a drag-and-drop WhatsApp chatbot builder with multi-language and multi-bot orchestration.",
+        "Integrated real-time agent handoff and analytics, driving 40% engagement uplift across a global user base."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Arizona State University",
+      "degree": "MS in Information Technology",
+      "location": "Tempe, AZ",
+      "period": "Aug 2022 - May 2024",
+      "gpa": "4.0 / 4.0",
+      "coursework": [
+        "Advanced Big Data Analytics & AI",
+        "Cloud Architecture",
+        "Advanced Database Management",
+        "Cyber Security",
+        "Managing IoT Devices"
+      ]
+    },
+    {
+      "school": "Birla Institute of Technology and Science, Pilani",
+      "degree": "BE in Mechanical Engineering",
+      "location": "Pilani, India",
+      "period": "Aug 2017 - May 2021",
+      "gpa": "8.03 / 10",
+      "coursework": [
+        "Computer Programming",
+        "Object Oriented Programming"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      {"name": "Python", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"},
+      {"name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"},
+      {"name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"},
+      {"name": "C", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"},
+      {"name": "C++", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"},
+      {"name": "Ruby", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"},
+      {"name": "HTML", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"},
+      {"name": "CSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"}
+    ],
+    "frameworks": [
+      {"name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"},
+      {"name": "AngularJS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"},
+      {"name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"},
+      {"name": "FastAPI", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"},
+      {"name": "Ruby on Rails", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg"}
+    ],
+    "cloud": [
+      {"name": "AWS", "icon": "/icons/aws.svg"},
+      {"name": "GCP", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"}
+    ],
+    "tools": [
+      {"name": "Redux", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"},
+      {"name": "TensorFlow", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"},
+      {"name": "Keras", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg"},
+      {"name": "Scikit-learn", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg"},
+      {"name": "Pandas", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"},
+      {"name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"},
+      {"name": "Kubernetes", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"},
+      {"name": "Dialogflow"}
+    ]
+  },
+  "spotlight": [
+    {
+      "title": "Bake Time Rollouts for EC2",
+      "description": "Launched Bake Time and ODCR-aware refreshes so enterprise fleets validate health signals before waves progress.",
+      "image": "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "Concept Explorer Simulation Hub",
+      "description": "Unified robotics simulation telemetry across accounts with drill-down dashboards and lifecycle controls.",
+      "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "Clinical Trial Triage Bot",
+      "description": "Crafted a GPT-powered assistant that blends empathetic copy with NLU to lift medical scheduling conversions by 90%.",
+      "image": "https://images.unsplash.com/photo-1581092152830-746c7863f85c?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "LLM Ops Control Plane",
+      "description": "Shipped a policy-aware platform that orchestrates prompts, guardrails, and evaluation metrics across model providers.",
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "Drift Radar for ML Pipelines",
+      "description": "Built a GPU-accelerated anomaly engine that flags dataset drift in minutes with explainability overlays.",
+      "image": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "Observability Mesh Reboot",
+      "description": "Redesigned distributed tracing with WASM sidecars, reducing noisy cardinality while boosting query speed 3x.",
+      "image": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "title": "Telemetry Playground",
+      "description": "Crafted an immersive sandbox where engineers remix synthetic traffic and chaos scripts before shipping.",
+      "image": "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1400&q=80"
+    }
+  ],
+  "timeline": [
+    {"year": "2024", "label": "AWS EC2 Auto Scaling", "description": "Delivering global scaling features and guardrails."},
+    {"year": "2023", "label": "ASU Graduate Research", "description": "Explored AI-driven cloud architectures."},
+    {"year": "2022", "label": "Simulation Platform", "description": "Enabled robotics mission operations via interactive dashboards."},
+    {"year": "2021", "label": "Conversational AI", "description": "Built ML powered assistants for healthcare and sports."}
+  ]
+}
