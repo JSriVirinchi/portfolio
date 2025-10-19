@@ -42,7 +42,7 @@ function App() {
         <ExperienceSection experiences={profile.experience} />
         <SkillsSection skills={profile.skills} />
         <EducationSection schools={profile.education} />
-        <GithubShowcase />
+        <GithubShowcase profile={profile} />
         <ContactSection profile={profile} />
       </main>
       <Footer />

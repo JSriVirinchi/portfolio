@@ -15,7 +15,7 @@ load_dotenv(ROOT_DIR / ".env")
 class Settings(BaseModel):
     profile_path: Path = ROOT_DIR / "app" / "data" / "profile.json"
     frontend_origin: str = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
-    github_username: str = os.getenv("GITHUB_USERNAME", "JSriVirinchi")
+    github_username: str = os.getenv("GITHUB_USERNAME", "JsriVirinchi")
 
     email_smtp_host: Optional[str] = os.getenv("EMAIL_SMTP_HOST")
     email_smtp_port: int = int(os.getenv("EMAIL_SMTP_PORT", "587"))
