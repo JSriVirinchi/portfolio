@@ -69,7 +69,11 @@ export function TechNav({ profile }: Props) {
         <span />
         <span />
       </button>
-      <nav id="primary-navigation" aria-label="Primary" className={menuOpen ? 'open' : undefined}>
+      <nav
+        id="primary-navigation"
+        aria-label="Primary"
+        className={menuOpen ? 'open' : undefined}
+      >
         <ul>
           {links.map((item) => (
             <li key={item.href}>
@@ -80,14 +84,6 @@ export function TechNav({ profile }: Props) {
           ))}
         </ul>
       </nav>
-      {menuOpen && (
-        <button
-          type="button"
-          className="tech-nav-backdrop"
-          aria-label="Close navigation menu"
-          onClick={closeMenu}
-        />
-      )}
     </header>
   );
 }
