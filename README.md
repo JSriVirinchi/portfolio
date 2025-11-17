@@ -79,3 +79,15 @@ Launch dev mode at `http://localhost:5173`. The production build is available th
 - Deploy FastAPI (e.g., on Render, Railway, or AWS) and serve the Vite build from a CDN or static host.
 - Connect Route53, CloudFront, or similar to present the custom domain once deployed.
 - Add analytics (PostHog, Plausible) and automate GitHub fetch caching if hosting at scale.
+
+## Deployment (Render + Vercel + GoDaddy)
+- **Domain:** `virinchijunuthula.com` registered via GoDaddy with nameservers pointing to Vercel DNS (ns1/ns2.vercel-dns.com). `www` redirects to the apex.
+- **Frontend:** Vercel project connected to GitHub `main`, build command `npm run build`, output `frontend/dist`, env var `VITE_API_BASE_URL=https://api.virinchijunuthula.com`. Every push to `main` triggers a production redeploy.
+- **Backend:** Render Web Service using repo root `backend`, build `pip install -r requirements.txt`, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`. Environment includes `FRONTEND_ORIGIN=https://virinchijunuthula.com`, `GITHUB_USERNAME=...`, SendGrid credentials (`SENDGRID_API_KEY`, `EMAIL_FROM`, `EMAIL_FORWARD_TO`). Custom domain `api.virinchijunuthula.com` CNAMEs to Render.
+- **DNS records:** In Vercel DNS—`A @ 76.76.21.21`, `CNAME www cname.vercel-dns.com`, `CNAME api portfolio-j9sc.onrender.com`.
+- **Workflow:** Develop locally → push to GitHub `main` → Render rebuilds backend, Vercel rebuilds frontend, custom domain + `api` subdomain reflect latest code automatically.
+
+### Email delivery via SendGrid
+1. Sign up for the free SendGrid plan and complete single sender verification for `virinchi.portfolio@gmail.com`.
+2. Create an API key with Mail Send permission; store it in Render as `SENDGRID_API_KEY` along with `EMAIL_FROM=virinchi.portfolio@gmail.com` and `EMAIL_FORWARD_TO=virinchi.junuthula@gmail.com`.
+3. The backend now uses SendGrid’s HTTP API (no SMTP), so outbound messages work even on Render’s free tier.

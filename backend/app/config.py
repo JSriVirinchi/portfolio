@@ -17,13 +17,9 @@ class Settings(BaseModel):
     frontend_origin: str = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
     github_username: str = os.getenv("GITHUB_USERNAME", "JsriVirinchi")
 
-    email_smtp_host: Optional[str] = os.getenv("EMAIL_SMTP_HOST")
-    email_smtp_port: int = int(os.getenv("EMAIL_SMTP_PORT", "587"))
-    email_smtp_username: Optional[str] = os.getenv("EMAIL_SMTP_USERNAME")
-    email_smtp_password: Optional[str] = os.getenv("EMAIL_SMTP_PASSWORD")
+    sendgrid_api_key: Optional[str] = os.getenv("SENDGRID_API_KEY")
     email_from: EmailStr = Field(default=os.getenv("EMAIL_FROM") or "portfolio@localhost")
     email_to: EmailStr = Field(default=os.getenv("EMAIL_FORWARD_TO") or "virinchi.junuthula@gmail.com")
-    email_use_tls: bool = os.getenv("EMAIL_USE_TLS", "true").lower() != "false"
 
 
 @lru_cache()
