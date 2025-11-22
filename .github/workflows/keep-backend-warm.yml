@@ -1,0 +1,25 @@
+name: Keep Render Backend Warm
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 10 minutes
+  workflow_dispatch:
+
+env:
+  HEALTH_URL: https://api.virinchijunuthula.com/health
+  PROFILE_URL: https://api.virinchijunuthula.com/api/profile
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl warmup endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          urls=("$HEALTH_URL" "$PROFILE_URL")
+          for url in "${urls[@]}"; do
+            echo "Hitting $url at $(date -u)..."
+            curl --fail --silent --show-error --max-time 15 "$url" >/dev/null
+          done
+          echo "Render backend kept warm."
