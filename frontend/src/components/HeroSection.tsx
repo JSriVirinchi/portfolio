@@ -54,9 +54,9 @@ export function HeroSection({ profile }: Props) {
         </div>
         <div className="hero-aside">
           <TerminalOverlay />
-          <SkillsTape skills={profile.skills} />
         </div>
       </div>
+      <SkillsTape skills={profile.skills} />
     </section>
   );
 }

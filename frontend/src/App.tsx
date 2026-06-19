@@ -21,14 +21,31 @@ function App() {
   useEffect(() => {
     const root = mainRef.current;
     if (!root) return;
-    const sections = Array.from(root.querySelectorAll<HTMLElement>(':scope > section'));
+    // Individual blocks (not whole sections) reveal as they scroll into view,
+    // so content unfolds progressively. The pinned experience animates itself.
+    const selector =
+      '.section-header, .gallery, .skills-card, .cert-card, .education-card, ' +
+      '.featured-card, .github-contributions, .contact-form, .contact-meta';
+    const els = Array.from(root.querySelectorAll<HTMLElement>(selector)).filter(
+      (el) => !el.closest('.xp-scroll'),
+    );
+    els.forEach((el) => el.classList.add('reveal'));
+    // stagger items that share a parent (e.g. cards in a grid row)
+    els.forEach((el) => {
+      const parent = el.parentElement;
+      if (!parent) return;
+      const sibs = Array.from(parent.children).filter((c) => c.classList.contains('reveal'));
+      const i = sibs.indexOf(el);
+      if (i > 0) el.style.transitionDelay = `${Math.min(i, 4) * 110}ms`;
+    });
+
     let raf = 0;
     const reveal = () => {
       raf = 0;
-      const trigger = window.innerHeight * 0.88;
-      for (const section of sections) {
-        if (section.classList.contains('in-view')) continue;
-        if (section.getBoundingClientRect().top < trigger) section.classList.add('in-view');
+      const trigger = window.innerHeight * 0.9;
+      for (const el of els) {
+        if (el.classList.contains('is-in')) continue;
+        if (el.getBoundingClientRect().top < trigger) el.classList.add('is-in');
       }
     };
     const onScroll = () => {
@@ -68,10 +85,10 @@ function App() {
       <main ref={mainRef}>
         <HeroSection profile={profile} />
         <ExperienceSection experiences={profile.experience} />
+        <EducationSection schools={profile.education} />
         <SpotlightGallery items={profile.spotlight} />
         <SkillsSection skills={profile.skills} />
         <CertificationsSection items={profile.certifications ?? []} />
-        <EducationSection schools={profile.education} />
         <FeaturedSection items={profile.featured ?? []} />
         <GithubShowcase profile={profile} />
         <ContactSection profile={profile} />
