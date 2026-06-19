@@ -1,0 +1,224 @@
+{
+  "name": "Satya Sri Virinchi Junuthula",
+  "headline": "Software Development Engineer, AWS EC2 Auto Scaling",
+  "location": "Seattle, WA, USA",
+  "email": "virinchi.junuthula@gmail.com",
+  "phone": "+1-602-691-9735",
+  "linkedin": "https://linkedin.com/in/virinchi-junuthula-21734618a",
+  "github": "https://github.com/JsriVirinchi",
+  "resume": "https://drive.google.com/file/d/1qZYc6x7CtHNlfUDe06WqT66zfguqjFHh/view",
+  "summary": "Builder focused on resilient cloud-native experiences, currently crafting data-driven scaling workflows for AWS EC2 Auto Scaling. Passionate about purposeful UX, thoughtful automation, and bridging product goals with measurable engineering impact.",
+  "specialties": [
+    "Cloud-first frontends",
+    "Type-safe engineering",
+    "Scalable automation",
+    "Data informed UX"
+  ],
+  "experience": [
+    {
+      "company": "Amazon Web Services",
+      "title": "Software Development Engineer",
+      "location": "Seattle, WA",
+      "start": "Jul 2024",
+      "end": "Present",
+      "focus": "EC2 Auto Scaling console",
+      "highlights": [
+        "Shipped Bake Time and ODCR support across all AWS regions, aligning instance refresh flows with enterprise change controls.",
+        "Implemented attribute-based instance selection covering 15+ EC2 dimensions, driving a 20% adoption increase for stateful fleets.",
+        "Raised accessibility and observability for the AnyScale widget via CloudWatch dashboards, intuitive search, and policy automation.",
+        "Rolled strict null checks across the ASG console, eliminating 6000+ potential runtime defects while maintaining 90% coverage."        
+      ]
+    },
+    {
+      "company": "Amazon Robotics",
+      "title": "Software Development Engineer",
+      "location": "Boston, MA",
+      "start": "Jan 2024",
+      "end": "Jul 2024",
+      "focus": "Simulation tooling",
+      "highlights": [
+        "Built Concept Explorer dashboards to surface multi-account simulation health, unlocking 20% ops efficiency gains.",
+        "Delivered simulation lifecycle controls with auto-save, clone, and templating workflows, reducing setup time by 40%.",
+        "Designed accessible multi-format file workflows and end-to-end telemetry, shrinking performance investigation time by 30%."
+      ]
+    },
+    {
+      "company": "ASU Decision Theater Network",
+      "title": "Data Analyst",
+      "location": "Tempe, AZ · Hybrid · Part-time",
+      "start": "Jan 2023",
+      "end": "Jan 2024",
+      "focus": "NLP topic modeling & semantic clustering",
+      "highlights": [
+        "Top2Vec: applied top2vec — combining word embeddings with HDBSCAN clustering — to preprocess COVID-related data from PubMed, determining the optimal number of topics via semantic clustering to enable thorough topic identification and detailed analysis."
+      ]
+    },
+    {
+      "company": "Quantiphi, Inc.",
+      "title": "Machine Learning Engineer",
+      "location": "Bengaluru, India",
+      "start": "Jul 2021",
+      "end": "Apr 2022",
+      "focus": "Conversational AI accelerators",
+      "highlights": [
+        "Crafted an appointment booking chatbot UX with GPT/BERT backed NLU, boosting successful scheduling by 90%.",
+        "Led ASR enablement for Fox Sports showcases, achieving 82% transcription accuracy with hybrid data synthesis."      ]
+    },
+    {
+      "company": "ReferralYogi Technologies",
+      "title": "Fullstack Web Developer",
+      "location": "Chennai, India",
+      "start": "Aug 2020",
+      "end": "Jan 2021",
+      "focus": "WhatsApp automation studio",
+      "highlights": [
+        "Launched a drag-and-drop WhatsApp chatbot builder with multi-language and multi-bot orchestration.",
+        "Integrated real-time agent handoff and analytics, driving 40% engagement uplift across a global user base."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Arizona State University",
+      "degree": "MS in Information Technology",
+      "location": "Tempe, AZ",
+      "period": "Aug 2022 - May 2024",
+      "gpa": "4.0 / 4.0",
+      "coursework": [
+        "Advanced Big Data Analytics & AI",
+        "Cloud Architecture",
+        "Advanced Database Management",
+        "Cyber Security",
+        "Managing IoT Devices"
+      ]
+    },
+    {
+      "school": "Birla Institute of Technology and Science, Pilani",
+      "degree": "BE in Mechanical Engineering",
+      "location": "Pilani, India",
+      "period": "Aug 2017 - May 2021",
+      "gpa": "8.03 / 10",
+      "coursework": [
+        "Computer Programming",
+        "Object Oriented Programming"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      {"name": "Python", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"},
+      {"name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"},
+      {"name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"},
+      {"name": "C", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"},
+      {"name": "C++", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"},
+      {"name": "Ruby", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"},
+      {"name": "HTML", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"},
+      {"name": "CSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"}
+    ],
+    "frameworks": [
+      {"name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"},
+      {"name": "AngularJS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"},
+      {"name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"},
+      {"name": "FastAPI", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"},
+      {"name": "Ruby on Rails", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg"}
+    ],
+    "cloud": [
+      {"name": "AWS", "icon": "/icons/aws.svg"},
+      {"name": "GCP", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"}
+    ],
+    "tools": [
+      {"name": "Redux", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"},
+      {"name": "TensorFlow", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"},
+      {"name": "Keras", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg"},
+      {"name": "Scikit-learn", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg"},
+      {"name": "Pandas", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"},
+      {"name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"},
+      {"name": "Kubernetes", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"},
+      {"name": "Dialogflow"}
+    ]
+  },
+  "spotlight": [
+    {
+      "title": "Bake Time & ODCR Rollouts",
+      "category": "AWS · EC2 Auto Scaling",
+      "description": "Shipped Bake Time and On-Demand Capacity Reservation–aware instance refresh across all AWS regions, aligning Auto Scaling with enterprise change controls.",
+      "tags": ["AWS", "TypeScript", "React"]
+    },
+    {
+      "title": "Attribute-Based Instance Selection",
+      "category": "AWS · EC2 Auto Scaling",
+      "description": "Built attribute-based instance selection spanning 15+ EC2 dimensions, driving a 20% adoption increase for stateful fleets.",
+      "tags": ["AWS", "React", "Telemetry"]
+    },
+    {
+      "title": "Concept Explorer Simulation Hub",
+      "category": "Amazon Robotics",
+      "description": "Unified multi-account robotics simulation telemetry with drill-down dashboards and lifecycle controls — unlocking 20% ops efficiency gains.",
+      "tags": ["React", "Dashboards", "Simulation"]
+    },
+    {
+      "title": "Top2Vec COVID Topic Modeling",
+      "category": "ASU Decision Theater",
+      "description": "Applied Top2Vec — word embeddings with HDBSCAN clustering — to PubMed COVID data to find the optimal number of topics via semantic clustering.",
+      "tags": ["Python", "NLP", "HDBSCAN"]
+    },
+    {
+      "title": "Clinical Scheduling Assistant",
+      "category": "Quantiphi",
+      "description": "Crafted a GPT/BERT-backed appointment chatbot whose NLU lifted successful scheduling conversions by 90%.",
+      "tags": ["GPT", "BERT", "NLU"]
+    },
+    {
+      "title": "WhatsApp Automation Studio",
+      "category": "ReferralYogi",
+      "description": "Launched a drag-and-drop WhatsApp chatbot builder with multi-bot orchestration and real-time agent handoff — a 40% engagement uplift.",
+      "tags": ["Node.js", "Automation", "Realtime"]
+    }
+  ],
+  "timeline": [
+    {"year": "2024", "label": "AWS EC2 Auto Scaling", "description": "Delivering global scaling features and guardrails."},
+    {"year": "2023", "label": "ASU Graduate Research", "description": "Explored AI-driven cloud architectures."},
+    {"year": "2022", "label": "Simulation Platform", "description": "Enabled robotics mission operations via interactive dashboards."},
+    {"year": "2021", "label": "Conversational AI", "description": "Built ML powered assistants for healthcare and sports."}
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Generative AI Developer – Professional",
+      "issuer": "Amazon Web Services Training and Certification",
+      "image": "https://images.credly.com/size/340x340/images/52c6e5ac-9516-4944-a4df-e31b23c9bbf2/blob",
+      "url": "https://www.credly.com/badges/fd7bb99b-0aad-432d-9a16-7d07637f8c88/public_url"
+    },
+    {
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services Training and Certification",
+      "image": "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+      "url": "https://www.credly.com/badges/9775963b-75a4-47a1-9ef6-1b5b7a0ba90f/public_url"
+    }
+  ],
+  "featured": [
+    {
+      "title": "UW Buerk Student Startup Challenge",
+      "subtitle": "Featured by Ankit Roshan Talluri",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/posts/ankit-roshan-talluri-08866a318_stundentstartup-uw-buerk-activity-7278501976869425152-7ire/"
+    },
+    {
+      "title": "Seattle Data, AI & Security — Ambition Intelligence",
+      "subtitle": "Community event highlight",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/posts/seattle-data-ai-and-security_ambition-intelligence-ugcPost-7406867456113205248-1Kl7/"
+    },
+    {
+      "title": "Carnegie Mellon — NexHacks",
+      "subtitle": "Hackathon feature",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/posts/ramanpreetsinghkhinda_carnegiemellonuniversity-nexhacks-cmu-activity-7420336588171149312-YedD/"
+    },
+    {
+      "title": "Community Highlight",
+      "subtitle": "LinkedIn feature",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/posts/activity-7398919072609906690-APtL/"
+    }
+  ]
+}

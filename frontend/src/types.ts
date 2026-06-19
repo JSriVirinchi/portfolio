@@ -34,13 +34,31 @@ export interface Skills {
 export interface SpotlightItem {
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  category?: string;
+  tags?: string[];
+  link?: string;
 }
 
 export interface TimelineItem {
   year: string;
   label: string;
   description: string;
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  issued?: string;
+  image: string;
+  url?: string;
+}
+
+export interface Featured {
+  title: string;
+  subtitle?: string;
+  source?: string;
+  url: string;
 }
 
 export interface Profile {
@@ -59,6 +77,8 @@ export interface Profile {
   skills: Skills;
   spotlight: SpotlightItem[];
   timeline: TimelineItem[];
+  certifications?: Certification[];
+  featured?: Featured[];
 }
 
 export interface GithubRepo {

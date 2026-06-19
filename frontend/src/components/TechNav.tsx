@@ -6,22 +6,21 @@ interface Props {
 }
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#spotlight', label: 'Spotlight' },
   { href: '#experience', label: 'Experience' },
+  { href: '#spotlight', label: 'Spotlight' },
   { href: '#skills', label: 'Skills' },
+  { href: '#certifications', label: 'Certifications' },
   { href: '#github', label: 'GitHub' },
   { href: '#contact', label: 'Contact' },
 ];
 
 export function TechNav({ profile }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const initials = profile.name
-    .split(' ')
-    .filter(Boolean)
+  const words = profile.name.split(' ').filter(Boolean);
+  const initials = words
+    .slice(-2)
     .map((chunk) => chunk[0])
     .join('')
-    .slice(0, 4)
     .toUpperCase();
 
   useEffect(() => {
@@ -52,9 +51,12 @@ export function TechNav({ profile }: Props) {
     <header className={`tech-nav ${menuOpen ? 'is-open' : ''}`}>
       <div className="tech-nav-glow" aria-hidden />
       <a href="#top" className="tech-nav-logo" aria-label="Back to top">
-        <span>{initials}</span>
-        <span className="tech-nav-glitch" aria-hidden>
+        <span className="tech-nav-mono" aria-hidden>
           {initials}
+        </span>
+        <span className="tech-nav-name">
+          {words.slice(-2)[0]}
+          <span className="tech-nav-name-dim"> {words.slice(-2)[1]}</span>
         </span>
       </a>
       <button

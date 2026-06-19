@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Virinchi portfolio FastAPI backend on AWS Lambda, exposed through an API Gateway
+  HTTP API. Contact form delivers via Amazon SES.
+
+Parameters:
+  FrontendOrigin:
+    Type: String
+    Default: https://virinchijunuthula.com
+    Description: Allowed CORS origin (the deployed site).
+  GithubUsername:
+    Type: String
+    Default: JsriVirinchi
+  EmailFrom:
+    Type: String
+    Description: SES-verified sender identity (e.g. portfolio@virinchijunuthula.com).
+  EmailForwardTo:
+    Type: String
+    Default: virinchi.junuthula@gmail.com
+    Description: Inbox that receives contact-form messages.
+  ApiDomainName:
+    Type: String
+    Default: ''
+    Description: Optional custom domain for the API (e.g. api.virinchijunuthula.com). Leave blank to skip.
+  ApiCertificateArn:
+    Type: String
+    Default: ''
+    Description: ACM certificate ARN for ApiDomainName. MUST be in this stack's region (regional cert).
+  HostedZoneId:
+    Type: String
+    Default: ''
+    Description: Route53 hosted zone ID (only needed when ApiDomainName is set).
+
+Conditions:
+  HasCustomDomain: !And
+    - !Not [!Equals [!Ref ApiDomainName, '']]
+    - !Not [!Equals [!Ref ApiCertificateArn, '']]
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 512
+
+Resources:
+  PortfolioApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      # CORS is handled inside FastAPI (CORSMiddleware), so it is intentionally
+      # NOT configured here to avoid duplicate Access-Control-* headers.
+      Domain: !If
+        - HasCustomDomain
+        - DomainName: !Ref ApiDomainName
+          CertificateArn: !Ref ApiCertificateArn
+          Route53:
+            HostedZoneId: !Ref HostedZoneId
+        - !Ref AWS::NoValue
+
+  PortfolioFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: app.main.handler
+      Environment:
+        Variables:
+          FRONTEND_ORIGIN: !Ref FrontendOrigin
+          GITHUB_USERNAME: !Ref GithubUsername
+          EMAIL_PROVIDER: ses
+          EMAIL_FROM: !Ref EmailFrom
+          EMAIL_FORWARD_TO: !Ref EmailForwardTo
+      Policies:
+        - Statement:
+            - Sid: SendContactEmail
+              Effect: Allow
+              Action: ['ses:SendEmail']
+              Resource: !Sub 'arn:${AWS::Partition}:ses:${AWS::Region}:${AWS::AccountId}:identity/*'
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref PortfolioApi
+            Path: /{proxy+}
+            Method: ANY
+        Root:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref PortfolioApi
+            Path: /
+            Method: ANY
+
+Outputs:
+  ApiBaseUrl:
+    Description: Default invoke URL. Use as VITE_API_BASE_URL until the custom domain is live.
+    Value: !Sub 'https://${PortfolioApi}.execute-api.${AWS::Region}.amazonaws.com'
+  CustomDomainUrl:
+    Condition: HasCustomDomain
+    Description: Custom API domain.
+    Value: !Sub 'https://${ApiDomainName}'

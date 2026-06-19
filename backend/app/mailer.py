@@ -1,23 +1,68 @@
 from __future__ import annotations
 
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import HTTPException
 import httpx
+from starlette.concurrency import run_in_threadpool
 
 from .config import ROOT_DIR, get_settings
 from .schemas import ContactRequest
+
+SUBJECT = "Virinchi's Portfolio website."
 
 
 async def dispatch_contact_email(payload: ContactRequest) -> None:
     settings = get_settings()
 
-    if not settings.sendgrid_api_key:
-        _store_locally(payload)
+    # Preferred (all-AWS) path: Amazon SES.
+    if settings.use_ses:
+        await run_in_threadpool(
+            _send_via_ses,
+            settings.ses_region,
+            str(settings.email_from),
+            str(settings.email_to),
+            payload,
+        )
         return
 
-    await _send_via_sendgrid(settings.sendgrid_api_key, settings.email_from, settings.email_to, payload)
+    # Fallback: SendGrid HTTP API (kept for non-AWS hosting).
+    if settings.sendgrid_api_key:
+        await _send_via_sendgrid(
+            settings.sendgrid_api_key,
+            str(settings.email_from),
+            str(settings.email_to),
+            payload,
+        )
+        return
+
+    # Last resort: persist locally so nothing is lost during local testing.
+    _store_locally(payload)
+
+
+def _send_via_ses(region: str | None, sender: str, recipient: str, payload: ContactRequest) -> None:
+    # boto3 is provided by the Lambda Python runtime; imported lazily so the
+    # other delivery paths don't require it to be installed.
+    import boto3
+    from botocore.exceptions import BotoCoreError, ClientError
+
+    client = boto3.client("sesv2", region_name=region)
+    try:
+        client.send_email(
+            FromEmailAddress=sender,
+            ReplyToAddresses=[payload.email],
+            Destination={"ToAddresses": [recipient]},
+            Content={
+                "Simple": {
+                    "Subject": {"Data": SUBJECT},
+                    "Body": {"Text": {"Data": _format_body(payload)}},
+                }
+            },
+        )
+    except (BotoCoreError, ClientError) as exc:  # pragma: no cover - network/IAM errors
+        raise HTTPException(status_code=502, detail=f"SES send failed: {exc}") from exc
 
 
 async def _send_via_sendgrid(api_key: str, sender: str, recipient: str, payload: ContactRequest) -> None:
@@ -25,7 +70,7 @@ async def _send_via_sendgrid(api_key: str, sender: str, recipient: str, payload:
         "personalizations": [
             {
                 "to": [{"email": recipient}],
-                "subject": "Virinchi's Portfolio website.",
+                "subject": SUBJECT,
             }
         ],
         "from": {"email": sender, "name": payload.name},
@@ -55,8 +100,19 @@ def _format_body(payload: ContactRequest) -> str:
     )
 
 
+def _log_dir() -> Path:
+    # Lambda's filesystem is read-only except for /tmp, so never write into the
+    # bundled package there. Honour an explicit override otherwise.
+    override = os.getenv("MESSAGE_LOG_DIR")
+    if override:
+        return Path(override)
+    if os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+        return Path("/tmp")
+    return ROOT_DIR / "app" / "data"
+
+
 def _store_locally(payload: ContactRequest) -> None:
-    storage = ROOT_DIR / "app" / "data" / "messages.log"
+    storage = _log_dir() / "messages.log"
     storage.parent.mkdir(parents=True, exist_ok=True)
     with storage.open("a", encoding="utf-8") as handle:
         handle.write(
@@ -64,7 +120,7 @@ def _store_locally(payload: ContactRequest) -> None:
                 [
                     "=" * 60,
                     datetime.now(timezone.utc).isoformat(),
-                    "Subject: Virinchi's Portfolio website.",
+                    f"Subject: {SUBJECT}",
                     _format_body(payload),
                     "",
                 ]

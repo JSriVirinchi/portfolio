@@ -13,6 +13,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Guard against scrollbar-width overflow from full-bleed sections.
+     `clip` (not `hidden`) does not create a scroll container, so it leaves
+     the sticky nav untouched. */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {

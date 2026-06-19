@@ -87,3 +87,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# AWS Lambda entrypoint. Mangum adapts this ASGI app to the Lambda/API Gateway
+# event model; `uvicorn app.main:app` is still used for local development.
+try:
+    from mangum import Mangum
+
+    handler = Mangum(app)
+except ImportError:  # mangum is only required in the Lambda package
+    handler = None

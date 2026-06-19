@@ -1,8 +1,6 @@
 import { getResumeUrl } from '../api/client';
 import { useTypewriter } from '../hooks/useTypewriter';
-import { useTilt } from '../hooks/useTilt';
 import type { Profile } from '../types';
-import { MetricsTicker } from './MetricsTicker';
 import { TerminalOverlay } from './TerminalOverlay';
 import { SkillsTape } from './SkillsTape';
 
@@ -19,13 +17,13 @@ const heroStatements = [
 export function HeroSection({ profile }: Props) {
   const resumeUrl = getResumeUrl(profile);
   const typed = useTypewriter(heroStatements, 70, 1800);
-  const { ref, style } = useTilt(10);
 
   return (
     <section className="hero" id="top">
       <div className="hero-glow" aria-hidden />
       <div className="hero-layout">
-        <div className="hero-card" ref={ref} style={style}>
+        <div className="hero-card">
+
           <div className="hero-content">
             <p className="hero-eyebrow">{profile.location}</p>
             <h1 className="hero-title">
@@ -52,15 +50,7 @@ export function HeroSection({ profile }: Props) {
                 </a>
               )}
             </div>
-            <div className="hero-specialties" aria-label="Areas of focus">
-              {profile.specialties.map((item) => (
-                <span key={item} className="hero-chip">
-                  {item}
-                </span>
-              ))}
-            </div>
           </div>
-          <MetricsTicker />
         </div>
         <div className="hero-aside">
           <TerminalOverlay />

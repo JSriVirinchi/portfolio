@@ -1,31 +1,10 @@
-import { useEffect, useState } from 'react';
-import { getProfile } from '../api/client';
+import profileData from '../data/profile.json';
 import type { Profile } from '../types';
 
-interface State {
-  data?: Profile;
-  loading: boolean;
-  error?: string;
-}
+// Profile content is bundled with the frontend, so the page renders instantly
+// from the CDN with no backend round-trip (no cold-start delay on load).
+const profile = profileData as unknown as Profile;
 
 export function useProfile() {
-  const [state, setState] = useState<State>({ loading: true });
-
-  useEffect(() => {
-    let active = true;
-    getProfile()
-      .then((data) => {
-        if (!active) return;
-        setState({ data, loading: false });
-      })
-      .catch((error: Error) => {
-        if (!active) return;
-        setState({ loading: false, error: error.message });
-      });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  return state;
+  return { data: profile, loading: false, error: undefined as string | undefined };
 }

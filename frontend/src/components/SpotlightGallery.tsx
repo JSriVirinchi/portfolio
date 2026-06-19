@@ -240,11 +240,24 @@ export function SpotlightGallery({ items }: Props) {
                     tabIndex={isClone ? -1 : 0}
                     aria-hidden={isClone || undefined}
                     data-carousel-card
+                    data-variant={index % 4}
                   >
-                    <div className="gallery-image" style={{ backgroundImage: `url(${entry.item.image})` }} />
+                    <div className="gallery-banner" aria-hidden>
+                      <span className="gallery-banner-grid" />
+                      {entry.item.category && (
+                        <span className="gallery-kicker">{entry.item.category}</span>
+                      )}
+                    </div>
                     <div className="gallery-body">
                       <h3>{entry.item.title}</h3>
                       <p>{entry.item.description}</p>
+                      {entry.item.tags && entry.item.tags.length > 0 && (
+                        <div className="gallery-tags">
+                          {entry.item.tags.map((tag) => (
+                            <span key={tag}>{tag}</span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </article>
                 );

@@ -327,8 +327,8 @@ export function GithubHeatmap({ profile }: Props) {
                 weekStart={1}
                 showWeekdayLabels
                 blockRadius={4}
-                blockSize={12}
-                blockMargin={4}
+                blockSize={15}
+                blockMargin={5}
                 renderBlock={(block, activity) =>
                   cloneElement(block, {
                     title:

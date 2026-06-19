@@ -1,4 +1,4 @@
-import type { GithubResponse, Profile } from '../types';
+import type { Profile } from '../types';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
 
@@ -16,15 +16,6 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   }
 
   return response.json() as Promise<T>;
-}
-
-export function getProfile(): Promise<Profile> {
-  return request<Profile>('/api/profile');
-}
-
-export function searchRepos(query: string): Promise<GithubResponse> {
-  const params = query ? `?q=${encodeURIComponent(query)}` : '';
-  return request<GithubResponse>(`/api/github/repos${params}`);
 }
 
 export interface ContactPayload {

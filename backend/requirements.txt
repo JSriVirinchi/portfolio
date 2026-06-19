@@ -3,3 +3,8 @@ uvicorn[standard]==0.30.6
 python-dotenv==1.0.1
 httpx==0.27.2
 pydantic[email]==2.9.2
+# AWS Lambda adapter for the ASGI app.
+mangum==0.17.0
+# boto3 (SES client) is preinstalled in the Lambda runtime; pinned here for
+# local dev / sam build. Safe to drop from the package to slim it down.
+boto3==1.34.162
