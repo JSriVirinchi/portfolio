@@ -151,6 +151,14 @@ button, input, textarea { font-family: inherit; }
   /* Swap the experience hint to reflect the horizontal swipe gesture. */
   .pf-xp-hint-scroll { display: none; }
   .pf-xp-hint-swipe { display: inline !important; }
+
+  /* Coverflow cards stack vertically on mobile, so the fixed desktop heights
+     are too short — the CTA gets clipped by the card border. Give each card
+     more height and stop the title/image block from hogging space. */
+  [data-carousel="featured"] [data-carousel-stage] { height: clamp(440px, 62vh, 540px) !important; }
+  [data-carousel="featured"] [data-card-title] { flex: 0 0 auto !important; }
+  [data-carousel="spotlight"] [data-carousel-stage] { height: clamp(560px, 74vh, 640px) !important; }
+  [data-carousel="spotlight"] [data-card-inner] > div:first-child { flex: 0 0 160px !important; }
   .github-heatmap-username,
   .github-heatmap-total { display: none; }
 }
