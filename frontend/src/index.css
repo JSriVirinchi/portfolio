@@ -77,6 +77,46 @@ button, input, textarea { font-family: inherit; }
     background: linear-gradient(90deg, transparent, rgba(124, 160, 255, .22), transparent);
     margin: 0 auto;
   }
+
+  /* Coverflow carousels peek their side cards past the viewport by design.
+     On desktop `html { overflow-x: clip }` hides that; older mobile Safari
+     (<16) ignores `clip`, so clip the carousel itself to stop the page from
+     scrolling sideways and pushing the nav burger off-screen. */
+  [data-carousel] { overflow: hidden; }
+
+  /* Hero splash: drop the "scroll to enter" hint to the bottom of the screen
+     while leaving the centered headline exactly where it is. */
+  .pf-scroll-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 26px;
+    margin-top: 0 !important;
+  }
+
+  /* Education card meta: period on the left, GPA pill on the right — one tidy
+     line, no wasted vertical space. The secondary "· location" is dropped on
+     mobile so the period and GPA never get squeezed or truncated. */
+  .pf-edu-meta { flex-wrap: nowrap !important; gap: 7px !important; }
+  .pf-edu-meta > span { white-space: nowrap; }
+  .pf-edu-meta > span:nth-child(2),
+  .pf-edu-meta > span:nth-child(3) { display: none; }
+  .pf-edu-meta > span:nth-child(4) { flex: none; }
+
+  /* Experience: horizontal swipe carousel — hide the native scrollbar and
+     shrink the giant watermark number so it doesn't crowd the card content. */
+  .pf-exp-track { scrollbar-width: none; }
+  .pf-exp-track::-webkit-scrollbar { display: none; }
+
+  /* The per-tick "Company Year" labels are sized for the wide desktop timeline;
+     in a 375px viewport the end label overflows the screen (inflating the fixed
+     nav's containing block). Drop to a clean dots-only scrubber on mobile. */
+  [data-tl-label] { display: none; }
+  .pf-xp-num {
+    font-size: 4.6rem !important;
+    top: 10px !important;
+    right: 14px !important;
+  }
 }
 
 @media (min-width: 861px) {

@@ -187,7 +187,7 @@ export default function Portfolio() {
 
       <main ref={rootRef}>
         {/* intro splash */}
-        <section id="hero" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px clamp(22px,5vw,64px) 80px')}>
+        <section id="hero" className="pf-hero-splash" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px clamp(22px,5vw,64px) 80px')}>
           <div data-reveal style={s('max-width:900px;display:flex;flex-direction:column;align-items:center;gap:24px;width:100%')}>
             <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.9);border:1px solid rgba(124,160,255,.3);padding:7px 16px;border-radius:999px")}>📍 Seattle, WA · Software Engineer</span>
             <h1 style={s('margin:0;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:#fff')}>
@@ -196,7 +196,7 @@ export default function Portfolio() {
             </h1>
             <p style={s('margin:0;font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(210,220,255,.8);max-width:62ch')}>Software Development Engineer at AWS working on EC2 Auto Scaling. I am driven by a passion for building impactful, world-class AI solutions.</p>
           </div>
-          <div style={s("margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(170,190,235,.72)")}>
+          <div className="pf-scroll-hint" style={s("margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(170,190,235,.72)")}>
             <span>scroll to enter</span>
             <span style={s('font-size:1.2rem;animation:aviHint 1.6s ease-in-out infinite')}>↓</span>
           </div>
@@ -259,10 +259,10 @@ export default function Portfolio() {
               <span style={s("font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(170,190,235,.5)")}>scroll ↓</span>
             </div>
 
-            <div ref={expTrackRef} style={s('display:flex;flex-direction:row;width:500vw;height:100vh;will-change:transform')}>
+            <div ref={expTrackRef} className="pf-exp-track" style={s('display:flex;flex-direction:row;width:500vw;height:100vh;will-change:transform')}>
               {D.experience.map((role) => (
                 <div key={role.no} style={s('flex:none;width:100vw;height:100vh;display:flex;align-items:center;padding:0 clamp(24px,6vw,120px);position:relative')}>
-                  <span style={s("position:absolute;top:clamp(70px,14vh,140px);right:clamp(20px,5vw,90px);font-family:'JetBrains Mono',monospace;font-size:clamp(7rem,20vw,18rem);font-weight:700;line-height:.8;color:rgba(124,160,255,.05);pointer-events:none;user-select:none")}>{role.no}</span>
+                  <span className="pf-xp-num" style={s("position:absolute;top:clamp(70px,14vh,140px);right:clamp(20px,5vw,90px);font-family:'JetBrains Mono',monospace;font-size:clamp(7rem,20vw,18rem);font-weight:700;line-height:.8;color:rgba(124,160,255,.05);pointer-events:none;user-select:none")}>{role.no}</span>
                   <div data-xp-grid style={s('position:relative;z-index:1;width:100%;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:center;transform-origin:center;will-change:opacity,transform')}>
                     <div style={s('min-width:0;display:flex;flex-direction:column;gap:16px')}>
                       <div style={s('display:flex;align-items:center;gap:16px')}>
@@ -333,7 +333,7 @@ export default function Portfolio() {
                       <span style={s('font-size:.98rem;color:rgba(220,228,255,.82)')}>{ed.degree}</span>
                     </div>
                   </div>
-                  <div style={s('display:flex;flex-wrap:wrap;align-items:center;gap:10px')}>
+                  <div className="pf-edu-meta" style={s('display:flex;flex-wrap:wrap;align-items:center;gap:10px')}>
                     <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.08em;color:rgba(150,180,255,.85)")}>{ed.period}</span>
                     <span style={s('color:rgba(160,176,220,.5)')}>·</span>
                     <span style={s('font-size:.85rem;color:rgba(190,204,240,.62)')}>{ed.location}</span>

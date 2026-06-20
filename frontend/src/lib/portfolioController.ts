@@ -41,6 +41,26 @@ export function createController(refs: ControllerRefs) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let menuOpen = false;
 
+  // True layout-viewport width. `window.innerWidth` is unreliable on mobile:
+  // any horizontal overflow inflates it, which would flip the breakpoint back
+  // to "desktop" and re-create the overflow (a feedback loop). clientWidth
+  // always reflects the real viewport and matches the CSS media queries.
+  const vpw = () => document.documentElement.clientWidth || window.innerWidth;
+
+  // Capture the original (desktop) inline styles for the experience block so we
+  // can restore them verbatim when switching layouts — no drift, no guesswork.
+  const expHead = expSticky.children[0] as HTMLElement | undefined;
+  const expPanels = Array.from(expTrack.children) as HTMLElement[];
+  const orig = {
+    section: expSection.getAttribute('style') || '',
+    sticky: expSticky.getAttribute('style') || '',
+    track: expTrack.getAttribute('style') || '',
+    timeline: timeline.getAttribute('style') || '',
+    head: expHead ? expHead.getAttribute('style') || '' : '',
+    panels: expPanels.map((p) => p.getAttribute('style') || ''),
+    grids: expPanels.map((p) => p.querySelector('[data-xp-grid]')?.getAttribute('style') || ''),
+  };
+
   let ctx: CanvasRenderingContext2D | null = null;
   let cw = 0, ch = 0;
   let raf = 0, cRaf = 0, typeTimer: ReturnType<typeof setTimeout> | undefined;
@@ -160,35 +180,52 @@ export function createController(refs: ControllerRefs) {
   }
   function toggleMenu() { menuOpen ? closeMenu() : openMenu(); }
 
-  /* ---------- layout (desktop pin vs mobile stack) ---------- */
+  /* ---------- layout (desktop pin vs mobile horizontal swipe) ---------- */
   function applyLayout() {
-    const mob = window.innerWidth <= 860;
+    const mob = vpw() <= 860;
     isMobile = mob;
     if (!mob && menuOpen) closeMenu();
     const n = expCount;
     const panels = Array.from(expTrack.children) as HTMLElement[];
     if (mob) {
-      expSection.style.height = 'auto';
-      expSticky.style.position = 'static'; expSticky.style.height = 'auto'; expSticky.style.overflow = 'visible';
-      expTrack.style.flexDirection = 'column'; expTrack.style.width = '100%'; expTrack.style.height = 'auto'; expTrack.style.transform = 'none';
-      panels.forEach((p) => {
-        p.style.width = '100%'; p.style.height = 'auto'; p.style.minHeight = '0'; p.style.padding = '70px 22px 30px';
+      // Mobile: a native horizontal scroll-snap carousel — the desktop "dolly"
+      // re-expressed as a touch swipe, with the timeline scrubber pinned below.
+      expSection.setAttribute('style', orig.section); expSection.style.height = 'auto';
+      expSticky.setAttribute('style', orig.sticky);
+      expSticky.style.position = 'relative'; expSticky.style.top = 'auto'; expSticky.style.height = 'auto'; expSticky.style.overflow = 'visible';
+      expTrack.setAttribute('style', orig.track);
+      expTrack.style.flexDirection = 'row'; expTrack.style.width = '100%'; expTrack.style.height = 'auto'; expTrack.style.transform = 'none';
+      expTrack.style.overflowX = 'auto'; expTrack.style.overflowY = 'hidden'; expTrack.style.scrollSnapType = 'x mandatory';
+      expTrack.style.setProperty('-webkit-overflow-scrolling', 'touch');
+      if (expHead) { expHead.setAttribute('style', orig.head); expHead.style.position = 'relative'; expHead.style.padding = '92px 22px 14px'; }
+      panels.forEach((p, i) => {
+        p.setAttribute('style', orig.panels[i]);
+        p.style.flex = '0 0 100%'; p.style.width = '100%'; p.style.height = 'auto'; p.style.minHeight = '0'; p.style.padding = '26px 22px 30px'; p.style.scrollSnapAlign = 'center';
         const g = p.querySelector<HTMLElement>('[data-xp-grid]');
-        if (g) {
-          g.style.gridTemplateColumns = 'minmax(0,1fr)';
-          if (reduced) { g.style.opacity = '1'; g.style.transform = 'none'; }
-          else if (g.dataset.mobReveal !== '1') { g.dataset.mobReveal = '1'; g.setAttribute('data-reveal', ''); g.style.transition = 'opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)'; g.style.opacity = '0'; g.style.transform = 'translateY(34px)'; }
-        }
+        if (g) { g.setAttribute('style', orig.grids[i]); g.style.gridTemplateColumns = 'minmax(0,1fr)'; g.style.opacity = '1'; g.style.transform = 'none'; g.removeAttribute('data-reveal'); g.dataset.mobReveal = ''; }
       });
-      timeline.style.display = 'none';
+      timeline.setAttribute('style', orig.timeline);
+      timeline.style.position = 'relative'; timeline.style.bottom = 'auto'; timeline.style.display = 'flex'; timeline.style.padding = '4px 22px 26px';
+      syncMobileTimeline();
     } else {
-      expSection.style.height = n * 100 + 'vh';
-      expSticky.style.position = 'sticky'; expSticky.style.top = '0'; expSticky.style.height = '100vh'; expSticky.style.overflow = 'hidden';
-      expTrack.style.flexDirection = 'row'; expTrack.style.width = n * 100 + 'vw'; expTrack.style.height = '100vh'; expTrack.style.transform = 'translate3d(0,0,0)';
-      panels.forEach((p) => { p.style.width = '100vw'; p.style.height = '100vh'; p.style.padding = '0 clamp(24px,6vw,120px)'; const g = p.querySelector<HTMLElement>('[data-xp-grid]'); if (g) { g.style.gridTemplateColumns = 'minmax(0,.85fr) minmax(0,1.15fr)'; g.removeAttribute('data-reveal'); g.dataset.mobReveal = ''; } });
-      timeline.style.display = 'flex';
+      expSection.setAttribute('style', orig.section); expSection.style.height = n * 100 + 'vh';
+      expSticky.setAttribute('style', orig.sticky);
+      expTrack.setAttribute('style', orig.track); expTrack.style.width = n * 100 + 'vw'; expTrack.style.transform = 'translate3d(0,0,0)';
+      if (expHead) expHead.setAttribute('style', orig.head);
+      panels.forEach((p, i) => { p.setAttribute('style', orig.panels[i]); const g = p.querySelector<HTMLElement>('[data-xp-grid]'); if (g) { g.setAttribute('style', orig.grids[i]); g.removeAttribute('data-reveal'); g.dataset.mobReveal = ''; } });
+      timeline.setAttribute('style', orig.timeline); timeline.style.display = 'flex';
     }
   }
+
+  // Mobile only: drive the timeline scrubber from the horizontal scroll offset.
+  function syncMobileTimeline() {
+    const max = expTrack.scrollWidth - expTrack.clientWidth;
+    const p = max > 0 ? Math.min(1, Math.max(0, expTrack.scrollLeft / max)) : 0;
+    const idx = Math.round(p * (expCount - 1));
+    updateTimeline(p, idx);
+    if (idx !== activeIdx) { activeIdx = idx; animatePanel(idx); }
+  }
+  function onExpScroll() { if (isMobile) syncMobileTimeline(); }
 
   /* ---------- main scroll frame ---------- */
   function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
@@ -262,6 +299,11 @@ export function createController(refs: ControllerRefs) {
   }
   function onTick(e: Event) {
     const i = parseInt((e.currentTarget as HTMLElement).dataset.idx || '0', 10) || 0;
+    if (isMobile) {
+      const panel = expTrack.children[i] as HTMLElement | undefined;
+      if (panel) expTrack.scrollTo({ left: panel.offsetLeft, behavior: reduced ? 'auto' : 'smooth' });
+      return;
+    }
     const total = expSection.offsetHeight - window.innerHeight;
     const n = expCount;
     const y = expSection.offsetTop + (i / (n - 1)) * total;
@@ -323,7 +365,7 @@ export function createController(refs: ControllerRefs) {
   function positionCarousel(c: Carousel) {
     const n = c.cards.length;
     const active = c.active;
-    const vw = window.innerWidth;
+    const vw = vpw();
     const mob = vw <= 760;
     const clamp = (lo: number, val: number, hi: number) => Math.max(lo, Math.min(val, hi));
     const sidePx = mob ? clamp(96, 0.3 * vw, 150) : clamp(150, 0.15 * vw, 230);
@@ -409,6 +451,7 @@ export function createController(refs: ControllerRefs) {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize, { passive: true });
   window.addEventListener('pointermove', onPointerMove, { passive: true });
+  expTrack.addEventListener('scroll', onExpScroll, { passive: true });
   drawCanvas();
   frame();
 
@@ -417,6 +460,7 @@ export function createController(refs: ControllerRefs) {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('pointermove', onPointerMove);
+      expTrack.removeEventListener('scroll', onExpScroll);
       timeline.querySelectorAll<HTMLElement>('[data-tl-tick]').forEach((b) => b.removeEventListener('click', onTick));
       carousels.forEach((c) => stopAutoplay(c));
       if (raf) cancelAnimationFrame(raf);
