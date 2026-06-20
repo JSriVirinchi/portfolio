@@ -191,10 +191,10 @@ export default function Portfolio() {
           <div data-reveal style={s('max-width:900px;display:flex;flex-direction:column;align-items:center;gap:24px;width:100%')}>
             <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.9);border:1px solid rgba(124,160,255,.3);padding:7px 16px;border-radius:999px")}>📍 Seattle, WA · Software Engineer</span>
             <h1 style={s('margin:0;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:#fff')}>
-              Hi, I&rsquo;m Virinchi
+              Hi, I&rsquo;m Virinchi.
               <span style={s('display:block')}>Passionate about <span style={s('background:linear-gradient(120deg,rgb(159,192,255),rgb(124,92,255));-webkit-background-clip:text;background-clip:text;color:transparent')}>AI.</span></span>
             </h1>
-            <p style={s('margin:0;font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(210,220,255,.8);max-width:62ch')}>Software Development Engineer on AWS EC2 Auto Scaling. I love to change the world with AI.</p>
+            <p style={s('margin:0;font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(210,220,255,.8);max-width:62ch')}>Software Development Engineer at AWS working on EC2 Auto Scaling. I am driven by a passion for building impactful, world-class AI solutions.</p>
           </div>
           <div style={s("margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(170,190,235,.72)")}>
             <span>scroll to enter</span>
@@ -211,8 +211,8 @@ export default function Portfolio() {
               <span style={s('display:block;width:150px;height:6px;border-radius:999px;background:linear-gradient(90deg,#89b4ff,#7c5cff);animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .16s both')} />
               <p style={s('margin:6px 0 0;font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:rgba(220,228,255,.92);animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .22s both')}>{D.headline}</p>
               <p style={s("margin:0;font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,1.5vw,1.25rem);color:rgba(129,198,255,.95);line-height:1.4;min-height:2.8em;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .28s both")}>I <span ref={typedRef} /><span style={s('display:inline-block;margin-left:.15em;color:rgba(129,198,255,.95);animation:aviBlink 1.1s steps(2,start) infinite')}>▌</span></p>
-              <p style={s('margin:0;font-size:1.02rem;color:rgba(220,228,255,.7);max-width:54ch;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .34s both')}>{D.summary}</p>
-              <div style={s('display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .4s both')}>
+              <p style={s('margin:0;font-size:1.02rem;color:rgba(220,228,255,.7);max-width:54ch;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .34s both')}>Currently building personal AI assistants and exploring the intersection of cloud infrastructure, 3D rendering, and modern frontend — shipping fast, learning constantly.</p>
+              <div className="pf-hero-cta" style={s('display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .4s both')}>
                 <a href={D.resume} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;text-decoration:none;color:#0a1126;background:linear-gradient(120deg,#7da3ff,#4c7ff9);box-shadow:0 12px 28px rgba(76,127,249,.34)')}>View Resume →</a>
                 <a href={D.linkedin} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.22);background:rgba(15,21,42,.55)')}>Connect on LinkedIn</a>
                 <a href={D.mailto} style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.14);background:rgba(15,21,42,.4)')}>✉ Email</a>
@@ -245,6 +245,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <hr className="pf-section-divider" />
 
         {/* 01 · the work — pinned horizontal dolly */}
         <section id="work" ref={expSectionRef} style={s('position:relative;z-index:1')}>
@@ -313,12 +315,14 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <hr className="pf-section-divider" />
+
         {/* 02 · foundations */}
         <section id="education" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
             {sectionLabel('02', 'Foundations')}
             <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>Two degrees, one throughline.</h2>
-            <p data-reveal style={s('margin:12px 0 0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:58ch')}>From mechanical engineering at BITS Pilani to a 4.0 master&rsquo;s in IT at Arizona State — a path that learned to turn data into decisions.</p>
+            <p data-reveal style={s('margin:12px 0 0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:58ch')}>From mechanical engineering at BITS Pilani to a 4.0 master&rsquo;s in Information Technology at Arizona State.</p>
             <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:46px')}>
               {D.education.map((ed) => (
                 <div key={ed.school} data-reveal style={s('display:flex;flex-direction:column;gap:18px;padding:30px;border-radius:28px;border:1px solid rgba(124,160,255,.16);background:linear-gradient(160deg,rgba(13,18,40,.72),rgba(8,11,26,.6));box-shadow:0 24px 54px rgba(6,10,26,.34)')}>
@@ -347,6 +351,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <hr className="pf-section-divider" />
 
         {/* 03 · selected work */}
         <section id="spotlight" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
@@ -391,6 +397,8 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <hr className="pf-section-divider" />
+
         {/* 04 · toolkit */}
         <section id="skills" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
@@ -415,6 +423,8 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <hr className="pf-section-divider" />
+
         {/* 05 · credentials */}
         <section id="certifications" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
@@ -435,6 +445,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <hr className="pf-section-divider" />
 
         {/* 06 · community */}
         <section id="featured" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
@@ -475,6 +487,8 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <hr className="pf-section-divider" />
+
         {/* 07 · contributions */}
         <section id="github" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
@@ -501,6 +515,8 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <hr className="pf-section-divider" />
+
         {/* contact */}
         <section id="contact" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px clamp(22px,5vw,64px)')}>
           <div className="pf-contact-grid" data-reveal style={s('width:100%;max-width:1100px;margin:0 auto;display:grid;gap:clamp(32px,5vw,72px);align-items:center')}>
@@ -525,7 +541,7 @@ export default function Portfolio() {
           <div style={s('max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px')}>
             <div style={s('display:flex;flex-direction:column;gap:6px')}>
               <span style={s('font-weight:700;letter-spacing:-.01em;color:#eef2ff')}>{D.name}</span>
-              <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;color:rgba(180,196,235,.55)")}>© 2025 · Built &amp; designed by Satya Virinchi</span>
+              <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;color:rgba(180,196,235,.55)")}>© 2026 · Built &amp; designed by Satya Virinchi</span>
             </div>
             <div style={s('display:flex;flex-direction:column;gap:8px;align-items:flex-end')}>
               <span style={s("font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:rgba(170,190,235,.5)")}>Crafted with</span>

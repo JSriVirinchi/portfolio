@@ -34,6 +34,8 @@ body {
 
 img { display: block; max-width: 100%; }
 
+hr { border: none; margin: 0; padding: 0; }
+
 button, input, textarea { font-family: inherit; }
 
 /* ---------- motion ---------- */
@@ -57,6 +59,28 @@ button, input, textarea { font-family: inherit; }
   .pf-burger { display: flex; }
   .pf-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .pf-contact-grid { grid-template-columns: minmax(0, 1fr); }
+
+  /* Full-width stacked CTA buttons in the hero grid */
+  .pf-hero-cta { flex-direction: column !important; }
+  .pf-hero-cta > a {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* Sleek horizontal section dividers */
+  .pf-section-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 160, 255, .22), transparent);
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 861px) {
+  .pf-section-divider { display: none; }
 }
 
 @media (max-width: 560px) {
