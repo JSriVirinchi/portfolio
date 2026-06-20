@@ -239,10 +239,10 @@ export const PORTFOLIO: PortfolioData = {
     { name: 'AWS Certified Solutions Architect – Associate', issuer: 'Amazon Web Services Training and Certification', image: 'https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png', url: 'https://www.credly.com/badges/9775963b-75a4-47a1-9ef6-1b5b7a0ba90f/public_url' },
   ],
   featured: [
-    { title: 'UW Buerk Student Startup Challenge', subtitle: 'Featured by Ankit Roshan Talluri', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/ankit-roshan-talluri-08866a318_stundentstartup-uw-buerk-activity-7278501976869425152-7ire/' },
-    { title: 'Seattle Data, AI & Security — Ambition Intelligence', subtitle: 'Community event highlight', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/seattle-data-ai-and-security_ambition-intelligence-ugcPost-7406867456113205248-1Kl7/' },
-    { title: 'Carnegie Mellon — NexHacks', subtitle: 'Hackathon feature', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/ramanpreetsinghkhinda_carnegiemellonuniversity-nexhacks-cmu-activity-7420336588171149312-YedD/' },
-    { title: 'Community Highlight', subtitle: 'LinkedIn feature', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/activity-7398919072609906690-APtL/' },
+    { title: 'Cloud Infrastructure Feature Launch', subtitle: 'Recognized for technical contributions to an AWS compute optimization launch — helping customers maximize unused EC2 capacity securely at scale.', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/activity-7398919072609906690-APtL/' },
+    { title: 'NexHacks at Carnegie Mellon University', subtitle: 'Tech Lead Ramanpreet Singh Khinda highlights the elite builders and mentors at the January 2026 NexHacks hackathon in Pittsburgh.', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/ramanpreetsinghkhinda_carnegiemellonuniversity-nexhacks-cmu-activity-7420336588171149312-YedD/' },
+    { title: 'Award-Winning AI Hackathon Project', subtitle: 'Runner-up in the Personal Growth & Wellbeing track at the Seattle Data AI & Security Hackathon. Our project AI to UI, built alongside Dharani, Kalyan, and Naveen.', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/seattle-data-ai-and-security_%F0%9D%97%94%F0%9D%97%BA%F0%9D%97%AF%F0%9D%97%B6%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BC%F0%9D%97%BB-%F0%9D%97%9C%F0%9D%97%BB%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%B9%F0%9D%97%B6%F0%9D%97%B4%F0%9D%97%B2%F0%9D%97%BB%F0%9D%97%B0%F0%9D%97%B2-ugcPost-7406867456113205248-1Kl7' },
+    { title: 'Prototype Funding for Evoloved', subtitle: 'Accepted into the UW Foster Buerk Center\'s Hollomon Health Innovation Challenge with co-creators Ankit Roshan Talluri and Suvarshitha Kalvakuntla.', source: 'LinkedIn', url: 'https://www.linkedin.com/posts/ankit-roshan-talluri-08866a318_stundentstartup-uw-buerk-activity-7278501976869425152-7ire/' },
   ],
   languages: [
     { name: 'Python', icon: dv('python/python-original.svg') },

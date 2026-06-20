@@ -35,13 +35,6 @@ function parseGithubUsername(handle?: string): string | undefined {
   }
 }
 
-function formatDateLabel(input: string | undefined) {
-  if (!input) return undefined;
-  const date = new Date(input);
-  if (Number.isNaN(date.getTime())) return undefined;
-  return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' }).format(date);
-}
-
 function formatFullDateLabel(input: string | undefined) {
   if (!input) return undefined;
   const date = new Date(input);
@@ -231,15 +224,6 @@ export function GithubHeatmap({ profile }: Props) {
     setOpenDropdown(false);
   }, [selectedYear]);
 
-  const firstDate = state.data[0]?.date;
-  const lastDate = state.data[state.data.length - 1]?.date;
-  const formattedRange = useMemo(() => {
-    const start = formatDateLabel(firstDate);
-    const end = formatDateLabel(lastDate);
-    if (!start || !end) return undefined;
-    return `${start} - ${end}`;
-  }, [firstDate, lastDate]);
-
   if (state.status === 'missing') {
     return null;
   }
@@ -247,14 +231,6 @@ export function GithubHeatmap({ profile }: Props) {
   return (
     <div className="github-contributions" aria-live="polite">
       <div className="github-heatmap-header">
-        <div>
-          <p className="github-heatmap-title">
-            Virinchi&rsquo;s contribution streak
-          </p>
-          {formattedRange && (
-            <p className="github-heatmap-range">{formattedRange}</p>
-          )}
-        </div>
         <div className="github-heatmap-meta">
           <span className="github-heatmap-username">@{username}</span>
           <span className="github-heatmap-total">
