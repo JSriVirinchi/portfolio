@@ -150,7 +150,9 @@ export const PORTFOLIO: PortfolioData = {
       company: 'ASU Decision Theater', title: 'Data Analyst',
       period: 'Jan 2023 — Jan 2024', logo: '/images/asu-dtn.jpg', url: 'https://dt.asu.edu/',
       focus: 'NLP topic modeling & semantic clustering',
-      metrics: [],
+      metrics: [
+        { display: '15', value: 15, suffix: '', label: 'min cluster size (HDBSCAN)' },
+      ],
       highlights: [
         'Applied Top2Vec — word embeddings with HDBSCAN clustering — to PubMed COVID data, determining the optimal number of topics via semantic clustering for thorough topic identification and analysis.',
       ],
