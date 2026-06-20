@@ -1,9 +1,12 @@
-import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import ActivityCalendar, { type Activity, type ThemeInput } from 'react-activity-calendar';
 import type { Profile } from '../types';
 
 interface Props {
   profile: Profile;
+  /** Optional header action (e.g. an "Explore GitHub" button). Rendered inside
+   *  the heatmap header so it can sit beside the year selector on mobile. */
+  action?: ReactNode;
 }
 
 interface ContributionResponse {
@@ -50,7 +53,7 @@ function filterContributionsByYear(data: Activity[], year?: number) {
   });
 }
 
-export function GithubHeatmap({ profile }: Props) {
+export function GithubHeatmap({ profile, action }: Props) {
   const username = useMemo(() => parseGithubUsername(profile.github), [profile.github]);
   const [state, setState] = useState<{
     status: LoadState;
@@ -231,6 +234,7 @@ export function GithubHeatmap({ profile }: Props) {
   return (
     <div className="github-contributions" aria-live="polite">
       <div className="github-heatmap-header">
+        {action && <div className="github-heatmap-action">{action}</div>}
         <div className="github-heatmap-meta">
           <span className="github-heatmap-username">@{username}</span>
           <span className="github-heatmap-total">

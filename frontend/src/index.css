@@ -84,8 +84,12 @@ button, input, textarea { font-family: inherit; }
      scrolling sideways and pushing the nav burger off-screen. */
   [data-carousel] { overflow: hidden; }
 
-  /* Hero splash: drop the "scroll to enter" hint to the bottom of the screen
-     while leaving the centered headline exactly where it is. */
+  /* Hero splash: sit the content slightly above center and drop the
+     "scroll to enter" hint to the bottom of the screen. */
+  .pf-hero-splash {
+    justify-content: flex-start !important;
+    padding-top: 15vh !important;
+  }
   .pf-scroll-hint {
     position: absolute;
     left: 0;
@@ -93,6 +97,10 @@ button, input, textarea { font-family: inherit; }
     bottom: 26px;
     margin-top: 0 !important;
   }
+
+  /* Hero location pill: location on its own line, role on a second line. */
+  .pf-hero-badge-sep { display: none; }
+  .pf-hero-badge-role { display: block; }
 
   /* Education card meta: period on the left, GPA pill on the right — one tidy
      line, no wasted vertical space. The secondary "· location" is dropped on
@@ -117,6 +125,30 @@ button, input, textarea { font-family: inherit; }
     top: 10px !important;
     right: 14px !important;
   }
+
+  /* Experience metrics: keep all stats (3+) on a single row to save height. */
+  .pf-xp-metrics { flex-wrap: nowrap !important; gap: 12px !important; }
+  .pf-xp-metrics > div { flex: 1 1 0; min-width: 0; }
+  .pf-xp-metrics [data-count] { font-size: 1.55rem !important; }
+  .pf-xp-metrics > div > span:last-child { font-size: .68rem; max-width: none; }
+
+  /* Contact CTAs: two evenly-distributed buttons per row. */
+  .pf-contact-cta { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pf-contact-cta > a { justify-content: center; width: 100%; box-sizing: border-box; }
+  /* Hide the raw email · phone · location line on mobile. */
+  .pf-contact-detail { display: none; }
+
+  /* Footer: left-align everything consistently when the columns stack. */
+  .pf-footer-craft { align-items: flex-start !important; }
+  .pf-footer-craft > div { justify-content: flex-start !important; }
+
+  /* GitHub: move the Explore button beside the year selector (one compact row)
+     and drop the redundant top label row + username/total to save height. */
+  .pf-gh-toprow { display: none !important; }
+  .github-heatmap-header { justify-content: space-between !important; }
+  .github-heatmap-action { display: inline-flex !important; }
+  .github-heatmap-username,
+  .github-heatmap-total { display: none; }
 }
 
 @media (min-width: 861px) {
@@ -173,6 +205,10 @@ button, input, textarea { font-family: inherit; }
   letter-spacing: .08em;
   color: rgba(190, 205, 255, .78);
 }
+
+/* Header action (Explore button) only surfaces on mobile; on desktop the
+   button lives in the section's top row instead. */
+.github-heatmap-action { display: none; }
 
 .github-heatmap-dropdown { position: relative; }
 

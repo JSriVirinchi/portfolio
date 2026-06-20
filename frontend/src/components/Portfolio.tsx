@@ -189,7 +189,7 @@ export default function Portfolio() {
         {/* intro splash */}
         <section id="hero" className="pf-hero-splash" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px clamp(22px,5vw,64px) 80px')}>
           <div data-reveal style={s('max-width:900px;display:flex;flex-direction:column;align-items:center;gap:24px;width:100%')}>
-            <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.9);border:1px solid rgba(124,160,255,.3);padding:7px 16px;border-radius:999px")}>📍 Seattle, WA · Software Engineer</span>
+            <span className="pf-hero-badge" style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.9);border:1px solid rgba(124,160,255,.3);padding:7px 16px;border-radius:999px")}><span>📍 Seattle, WA</span><span className="pf-hero-badge-sep"> · </span><span className="pf-hero-badge-role">Software Engineer</span></span>
             <h1 style={s('margin:0;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:#fff')}>
               Hi, I&rsquo;m Virinchi.
               <span style={s('display:block')}>Passionate about <span style={s('background:linear-gradient(120deg,rgb(159,192,255),rgb(124,92,255));-webkit-background-clip:text;background-clip:text;color:transparent')}>AI.</span></span>
@@ -277,7 +277,7 @@ export default function Portfolio() {
                     </div>
                     <div style={s('min-width:0;display:flex;flex-direction:column;gap:24px')}>
                       {role.metrics.length > 0 && (
-                        <div style={s('display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px)')}>
+                        <div className="pf-xp-metrics" style={s('display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px)')}>
                           {role.metrics.map((m) => (
                             <div key={m.label} style={s('display:flex;flex-direction:column;gap:2px;min-width:0')}>
                               <span data-count data-target={m.value} data-suffix={m.suffix} style={s('font-size:clamp(2rem,4vw,3.1rem);font-weight:800;letter-spacing:-.02em;line-height:1;background:linear-gradient(120deg,#9fc0ff,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent')}>{m.display}</span>
@@ -432,7 +432,7 @@ export default function Portfolio() {
         <section id="certifications" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
             {sectionLabel('05', 'Credentials')}
-            <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>AWS-verified, top to bottom.</h2>
+            <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>AWS-verified.</h2>
             <p data-reveal style={s('margin:12px 0 0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:58ch')}>Generative AI Developer (Professional) and Solutions Architect (Associate) — verifiable on Credly.</p>
             <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;margin-top:46px')}>
               {D.certifications.map((cert) => (
@@ -499,12 +499,14 @@ export default function Portfolio() {
             <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>Contributions, in green.</h2>
             <p data-reveal style={s('margin:12px 0 0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:58ch')}>Building in public since 2020 — here&rsquo;s the rhythm of the work, and the languages it&rsquo;s written in.</p>
             <div data-reveal style={s('margin-top:42px;padding:clamp(22px,3vw,30px);border-radius:28px;border:1px solid rgba(124,160,255,.16);background:linear-gradient(160deg,rgba(13,18,40,.7),rgba(8,11,26,.6));box-shadow:0 24px 54px rgba(6,10,26,.34)')}>
-              <div style={s('display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px')}>
+              <div className="pf-gh-toprow" style={s('display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px')}>
                 <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(190,205,255,.78)")}>Contribution activity</span>
                 <a href={D.github} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.86rem;text-decoration:none;color:#0a1126;background:linear-gradient(120deg,#7da3ff,#4c7ff9);box-shadow:0 12px 28px rgba(76,127,249,.32)')}>Explore GitHub →</a>
               </div>
               <div style={s('margin-top:20px')}>
-                <GithubHeatmap profile={profile} />
+                <GithubHeatmap profile={profile} action={(
+                  <a href={D.github} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:700;font-size:.78rem;text-decoration:none;color:#0a1126;background:linear-gradient(120deg,#7da3ff,#4c7ff9);box-shadow:0 10px 22px rgba(76,127,249,.3)')}>Explore GitHub →</a>
+                )} />
               </div>
             </div>
             <div data-reveal style={s('margin-top:26px;display:flex;flex-wrap:wrap;gap:18px 24px;align-items:center;justify-content:space-between')}>
@@ -527,13 +529,13 @@ export default function Portfolio() {
               <span style={s("font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.85)")}>08 — Let&rsquo;s build</span>
               <h2 style={s('margin:0;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.02em;font-weight:800;color:#fff;line-height:1.05')}>Let&rsquo;s build something<br /><span style={s('background:linear-gradient(120deg,#9fc0ff,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent')}>resilient together.</span></h2>
               <p style={s('margin:0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:46ch')}>Open to conversations about cloud-native products, automation, and data-informed UX. Send a note, or reach me directly.</p>
-              <div style={s('display:flex;flex-wrap:wrap;gap:10px;margin-top:4px')}>
+              <div className="pf-contact-cta" style={s('display:flex;flex-wrap:wrap;gap:10px;margin-top:4px')}>
                 <a href={D.mailto} style={s(primaryBtn)}>Email</a>
                 <a href={D.linkedin} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.22);background:rgba(15,21,42,.55)')}>LinkedIn</a>
                 <a href={D.github} target="_blank" rel="noreferrer" style={s(linkStyle)}>GitHub</a>
                 <a href={D.resume} target="_blank" rel="noreferrer" style={s(linkStyle)}>Resume</a>
               </div>
-              <p style={s("margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(170,190,235,.45)")}>{D.email} · {D.phone} · {D.location}</p>
+              <p className="pf-contact-detail" style={s("margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(170,190,235,.45)")}>{D.email} · {D.phone} · {D.location}</p>
             </div>
             <ContactForm />
           </div>
@@ -541,12 +543,12 @@ export default function Portfolio() {
 
         {/* footer */}
         <footer style={s('position:relative;z-index:1;border-top:1px solid rgba(124,160,255,.12);padding:40px clamp(22px,5vw,64px);background:rgba(5,6,15,.5)')}>
-          <div style={s('max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px')}>
+          <div className="pf-footer-inner" style={s('max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px')}>
             <div style={s('display:flex;flex-direction:column;gap:6px')}>
               <span style={s('font-weight:700;letter-spacing:-.01em;color:#eef2ff')}>{D.name}</span>
               <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;color:rgba(180,196,235,.55)")}>© 2026 · Built &amp; designed by Satya Virinchi</span>
             </div>
-            <div style={s('display:flex;flex-direction:column;gap:8px;align-items:flex-end')}>
+            <div className="pf-footer-craft" style={s('display:flex;flex-direction:column;gap:8px;align-items:flex-end')}>
               <span style={s("font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:rgba(170,190,235,.5)")}>Crafted with</span>
               <div style={s('display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end')}>
                 {['React', 'TypeScript', 'Vite', 'AWS'].map((t) => (
