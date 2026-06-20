@@ -1,60 +1,78 @@
 :root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: #e8ecf7;
   background-color: #05060f;
-  --navbar-offset: 112px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+* { box-sizing: border-box; }
+
 html {
   scroll-behavior: smooth;
-  /* Guard against scrollbar-width overflow from full-bleed sections.
-     `clip` (not `hidden`) does not create a scroll container, so it leaves
-     the sticky nav untouched. */
+  scroll-padding-top: 96px;
+  /* `clip` (not `hidden`) avoids creating a scroll container, so full-bleed
+     carousels can't break the fixed nav. */
   overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  html { scroll-behavior: auto; }
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #101431, #05060f 55%);
+  background: #05060f;
 }
 
-#root {
-  min-height: 100vh;
+#root { min-height: 100vh; }
+
+img { display: block; max-width: 100%; }
+
+button, input, textarea { font-family: inherit; }
+
+/* ---------- motion ---------- */
+@keyframes aviBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes aviUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes aviHint { 0% { transform: translateY(0); opacity: .35; } 50% { opacity: 1; } 100% { transform: translateY(9px); opacity: .35; } }
+@keyframes aviFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* ---------- responsive layout (desktop pin vs mobile stack) ----------
+   These properties are owned by CSS, never set inline, so media queries win. */
+.pf-nav-links { display: flex; }
+.pf-nav-cta { display: flex; }
+.pf-burger { display: none; }
+.pf-hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+.pf-contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); }
+.pf-skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 860px) {
+  .pf-nav-links { display: none; }
+  .pf-nav-cta { display: none; }
+  .pf-burger { display: flex; }
+  .pf-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .pf-contact-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
-img {
-  display: block;
-  max-width: 100%;
+@media (max-width: 560px) {
+  .pf-skills-grid { grid-template-columns: minmax(0, 1fr); }
+  .pf-term { display: none; }
 }
 
-button,
-input,
-textarea {
-  font-family: inherit;
+/* ---------- hover states (replaces the design's style-hover attribute) ---------- */
+.pf-nav-link:hover { color: #fff; }
+.pf-cf-btn:hover {
+  transform: scale(1.08);
+  border-color: rgba(124, 160, 255, .6);
+  background: rgba(20, 28, 56, .8);
+}
+.pf-cert-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124, 160, 255, .42);
+  box-shadow: 0 30px 60px rgba(12, 22, 60, .5);
 }
