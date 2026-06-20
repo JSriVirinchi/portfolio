@@ -256,7 +256,7 @@ export default function Portfolio() {
                 <span style={s("font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(150,180,255,.85)")}>01 — The Work</span>
                 <span style={s('font-size:clamp(1.4rem,2.4vw,2rem);font-weight:700;letter-spacing:-.01em;color:#f6f8ff')}>Five chapters, one trajectory</span>
               </div>
-              <span style={s("font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(170,190,235,.5)")}>scroll ↓</span>
+              <span style={s("font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(170,190,235,.5)")}><span className="pf-xp-hint-scroll">scroll ↓</span><span className="pf-xp-hint-swipe">swipe →</span></span>
             </div>
 
             <div ref={expTrackRef} className="pf-exp-track" style={s('display:flex;flex-direction:row;width:500vw;height:100vh;will-change:transform')}>

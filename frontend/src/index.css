@@ -147,6 +147,10 @@ button, input, textarea { font-family: inherit; }
   .pf-gh-toprow { display: none !important; }
   .github-heatmap-header { justify-content: space-between !important; }
   .github-heatmap-action { display: inline-flex !important; }
+
+  /* Swap the experience hint to reflect the horizontal swipe gesture. */
+  .pf-xp-hint-scroll { display: none; }
+  .pf-xp-hint-swipe { display: inline !important; }
   .github-heatmap-username,
   .github-heatmap-total { display: none; }
 }
@@ -209,6 +213,9 @@ button, input, textarea { font-family: inherit; }
 /* Header action (Explore button) only surfaces on mobile; on desktop the
    button lives in the section's top row instead. */
 .github-heatmap-action { display: none; }
+
+/* Experience hint: "scroll ↓" on desktop, "swipe →" on the mobile carousel. */
+.pf-xp-hint-swipe { display: none; }
 
 .github-heatmap-dropdown { position: relative; }
 
