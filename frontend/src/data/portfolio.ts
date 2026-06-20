@@ -19,6 +19,7 @@ export interface XpRole {
   title: string;
   period: string;
   logo: string;
+  url: string;
   focus: string;
   metrics: XpMetric[];
   highlights: string[];
@@ -41,6 +42,7 @@ export interface SpotlightItem {
   accent: string;
   description: string;
   tags: string[];
+  url?: string;
 }
 
 export interface SkillItem {
@@ -112,9 +114,9 @@ export const PORTFOLIO: PortfolioData = {
   ],
   experience: [
     {
-      no: '01', short: 'AWS', year: '’24', tag: 'Seattle, WA',
+      no: '01', short: 'AWS', year: "'24", tag: 'Seattle, WA',
       company: 'Amazon Web Services', title: 'Software Development Engineer',
-      period: 'Jul 2024 — Present', logo: '/images/aws.png',
+      period: 'Jul 2024 — Present', logo: '/images/aws.png', url: 'https://aws.amazon.com/',
       focus: 'Global instance-refresh & scaling guardrails',
       metrics: [
         { display: '4M+', value: 4, suffix: 'M+', label: 'customers served globally' },
@@ -128,9 +130,9 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
-      no: '02', short: 'Robotics', year: '’24', tag: 'Boston, MA',
+      no: '02', short: 'Robotics', year: "'24", tag: 'Boston, MA',
       company: 'Amazon Robotics', title: 'Software Development Engineer',
-      period: 'Jan 2024 — Jul 2024', logo: '/images/amazon.webp',
+      period: 'Jan 2024 — Jul 2024', logo: '/images/amazon.webp', url: 'https://www.aboutamazon.com/news/operations/amazon-robotics-robots-fulfillment-center',
       focus: 'Simulation tooling',
       metrics: [
         { display: '20%', value: 20, suffix: '%', label: 'ops efficiency gain' },
@@ -144,9 +146,9 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
-      no: '03', short: 'ASU', year: '’23', tag: 'Tempe, AZ · Hybrid',
+      no: '03', short: 'ASU', year: "'23", tag: 'Tempe, AZ · Hybrid',
       company: 'ASU Decision Theater', title: 'Data Analyst',
-      period: 'Jan 2023 — Jan 2024', logo: '/images/asu-dtn.jpg',
+      period: 'Jan 2023 — Jan 2024', logo: '/images/asu-dtn.jpg', url: 'https://dt.asu.edu/',
       focus: 'NLP topic modeling & semantic clustering',
       metrics: [],
       highlights: [
@@ -154,9 +156,9 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
-      no: '04', short: 'Quantiphi', year: '’21', tag: 'Bengaluru, India',
+      no: '04', short: 'Quantiphi', year: "'21", tag: 'Bengaluru, India',
       company: 'Quantiphi', title: 'Machine Learning Engineer',
-      period: 'Jul 2021 — Apr 2022', logo: '/images/quantiphi.jpg',
+      period: 'Jul 2021 — Apr 2022', logo: '/images/quantiphi.jpg', url: 'https://quantiphi.com/',
       focus: 'Conversational AI accelerators',
       metrics: [
         { display: '90%', value: 90, suffix: '%', label: 'more successful bookings' },
@@ -168,9 +170,9 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
-      no: '05', short: 'ReferralYogi', year: '’20', tag: 'Chennai, India',
+      no: '05', short: 'ReferralYogi', year: "'20", tag: 'Chennai, India',
       company: 'ReferralYogi', title: 'Fullstack Web Developer',
-      period: 'Aug 2020 — Jan 2021', logo: '/images/referralyogi.png',
+      period: 'Aug 2020 — Jan 2021', logo: '/images/referralyogi.png', url: 'https://www.referralyogi.com/',
       focus: 'WhatsApp automation studio',
       metrics: [
         { display: '40%', value: 40, suffix: '%', label: 'engagement uplift' },
@@ -197,7 +199,7 @@ export const PORTFOLIO: PortfolioData = {
     { title: 'Bake Time & ODCR Rollouts', category: 'AWS · EC2 Auto Scaling', image: '/images/baketime.png', accent: 'linear-gradient(150deg,#1a2a52,#0a1530)', description: 'Shipped Bake Time and On-Demand Capacity Reservation–aware instance refresh across all AWS regions, aligning Auto Scaling with enterprise change controls.', tags: ['AWS', 'TypeScript', 'React'] },
     { title: 'Attribute-Based Instance Selection', category: 'AWS · EC2 Auto Scaling', image: '/images/attibute.png', accent: 'linear-gradient(150deg,#1a2a52,#0a1530)', description: 'Built attribute-based instance selection spanning 15+ EC2 dimensions, driving a 20% adoption increase for stateful fleets.', tags: ['AWS', 'React', 'Telemetry'] },
     { title: 'Concept Explorer Simulation Hub', category: 'Amazon Robotics', image: '/images/amazonroboarm.jpg', accent: 'linear-gradient(150deg,#3a2a12,#1a1206)', description: 'Unified multi-account robotics simulation telemetry with drill-down dashboards and lifecycle controls — unlocking 20% ops efficiency gains.', tags: ['React', 'Dashboards', 'Simulation'] },
-    { title: 'Top2Vec COVID Topic Modeling', category: 'ASU Decision Theater', image: '/images/top2vec.svg', accent: 'linear-gradient(150deg,#4a1a22,#1f0a10)', description: 'Applied Top2Vec — word embeddings with HDBSCAN clustering — to PubMed COVID data to find the optimal number of topics via semantic clustering.', tags: ['Python', 'NLP', 'HDBSCAN'] },
+    { title: 'Top2Vec COVID Topic Modeling', category: 'ASU Decision Theater', image: '/images/top2vec.svg', accent: 'linear-gradient(150deg,#4a1a22,#1f0a10)', description: 'Applied Top2Vec — word embeddings with HDBSCAN clustering — to PubMed COVID data to find the optimal number of topics via semantic clustering.', tags: ['Python', 'NLP', 'HDBSCAN', 'Min Cluster: 15'], url: 'https://github.com/ddangelov/top2vec' },
     { title: 'Clinical Scheduling Assistant', category: 'Quantiphi', image: '/images/quantiphi.png', accent: 'linear-gradient(150deg,#13324a,#08161f)', description: 'Crafted a GPT/BERT-backed appointment chatbot whose NLU lifted successful scheduling conversions by 90%.', tags: ['GPT', 'BERT', 'NLU'] },
     { title: 'WhatsApp Automation Studio', category: 'ReferralYogi', image: '/images/referralyogi-bot.png', accent: 'linear-gradient(150deg,#143a2a,#081f14)', description: 'Launched a drag-and-drop WhatsApp chatbot builder with multi-bot orchestration and real-time agent handoff — a 40% engagement uplift.', tags: ['Node.js', 'Automation', 'Realtime'] },
   ],

@@ -153,8 +153,8 @@ export default function Portfolio() {
       {/* nav */}
       <header style={s('position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px clamp(18px,4vw,48px);background:rgba(5,6,15,.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(124,160,255,.12)')}>
         <a href="#hero" style={s('display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:inherit')}>
-          <span style={s("display:grid;place-items:center;width:40px;height:40px;border-radius:11px;font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:600;color:#eaf0ff;background:linear-gradient(135deg,#7da3ff,#6248ff);box-shadow:0 6px 16px rgba(76,92,255,.35),inset 0 1px 0 rgba(255,255,255,.25)")}>SV</span>
-          <span style={s('font-weight:700;letter-spacing:-.01em;font-size:1rem;white-space:nowrap')}>Satya<span style={s('color:rgba(170,186,235,.6);font-weight:500')}> Virinchi</span></span>
+          <span style={s("display:grid;place-items:center;width:40px;height:40px;border-radius:11px;font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:600;color:#eaf0ff;background:linear-gradient(135deg,#7da3ff,#6248ff);box-shadow:0 6px 16px rgba(76,92,255,.35),inset 0 1px 0 rgba(255,255,255,.25)")}>VJ</span>
+          <span style={s('font-weight:700;letter-spacing:-.01em;font-size:1rem;white-space:nowrap')}>Virinchi<span style={s('color:rgba(170,186,235,.6);font-weight:500')}> Junuthula</span></span>
         </a>
         <nav className="pf-nav-links" style={s('gap:20px')}>
           {NAV.map((l) => (
@@ -215,7 +215,7 @@ export default function Portfolio() {
               <div className="pf-hero-cta" style={s('display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .4s both')}>
                 <a href={D.resume} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;text-decoration:none;color:#0a1126;background:linear-gradient(120deg,#7da3ff,#4c7ff9);box-shadow:0 12px 28px rgba(76,127,249,.34)')}>View Resume →</a>
                 <a href={D.linkedin} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.22);background:rgba(15,21,42,.55)')}>Connect on LinkedIn</a>
-                <a href={D.mailto} style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.14);background:rgba(15,21,42,.4)')}>✉ Email</a>
+                <a href={D.mailto} style={s('display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.14);background:rgba(15,21,42,.4)')}>Email</a>
               </div>
               <div style={s('display:flex;flex-wrap:wrap;gap:9px;margin-top:10px;animation:aviUp .8s cubic-bezier(.22,.61,.36,1) .46s both')}>
                 {D.specialties.map((spec) => (
@@ -266,13 +266,13 @@ export default function Portfolio() {
                   <div data-xp-grid style={s('position:relative;z-index:1;width:100%;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:center;transform-origin:center;will-change:opacity,transform')}>
                     <div style={s('min-width:0;display:flex;flex-direction:column;gap:16px')}>
                       <div style={s('display:flex;align-items:center;gap:16px')}>
-                        <span style={s('display:grid;place-items:center;width:64px;height:64px;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 12px 30px rgba(6,10,26,.45);flex:none')}><img src={role.logo} alt={role.company} style={s('width:100%;height:100%;object-fit:contain;padding:8px')} /></span>
+                        <a href={role.url} target="_blank" rel="noreferrer" style={s('display:grid;place-items:center;width:64px;height:64px;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 12px 30px rgba(6,10,26,.45);flex:none;text-decoration:none')}><img src={role.logo} alt={role.company} style={s('width:100%;height:100%;object-fit:contain;padding:8px')} /></a>
                         <div style={s('display:flex;flex-direction:column;gap:3px')}>
                           <span style={s("font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(150,180,255,.85)")}>{role.period}</span>
                           <span style={s('font-size:.82rem;color:rgba(190,204,240,.6)')}>{role.tag}</span>
                         </div>
                       </div>
-                      <h3 style={s('margin:0;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.04;letter-spacing:-.015em;font-weight:800;color:#fff')}>{role.company}</h3>
+                      <a href={role.url} target="_blank" rel="noreferrer" style={s('margin:0;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.04;letter-spacing:-.015em;font-weight:800;color:#fff;text-decoration:none')}>{role.company}</a>
                       <p style={s('margin:0;font-size:1.1rem;font-weight:600;color:rgba(220,228,255,.9)')}>{role.title}</p>
                     </div>
                     <div style={s('min-width:0;display:flex;flex-direction:column;gap:24px')}>
@@ -358,7 +358,7 @@ export default function Portfolio() {
         <section id="spotlight" style={s('position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,5vw,64px)')}>
           <div style={s('width:100%;max-width:1180px;margin:0 auto')}>
             {sectionLabel('03', 'Selected Work')}
-            <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>Six builds worth a closer look.</h2>
+            <h2 data-reveal style={s('margin:14px 0 0;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;font-weight:800;color:#f6f8ff;max-width:20ch')}>Few projects that I have done.</h2>
             <p data-reveal style={s('margin:12px 0 0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:58ch')}>From global cloud rollouts to conversational AI and NLP research — the projects behind the metrics.</p>
             <div data-carousel="spotlight" style={s('position:relative;width:100vw;margin-left:calc(50% - 50vw);margin-top:clamp(30px,4vw,48px)')}>
               <div data-carousel-stage style={s('position:relative;height:clamp(460px,58vh,540px);perspective:1800px')}>
@@ -377,6 +377,9 @@ export default function Portfolio() {
                             ))}
                           </div>
                           <p style={s('margin:0;font-size:.98rem;color:rgba(208,218,248,.78);line-height:1.55')}>{proj.description}</p>
+                          {proj.url && (
+                            <a href={proj.url} target="_blank" rel="noreferrer" style={s('align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:999px;font-size:.82rem;font-weight:700;text-decoration:none;color:#0a1126;background:linear-gradient(120deg,#7da3ff,#4c7ff9);box-shadow:0 8px 20px rgba(76,127,249,.3)')}>View on GitHub →</a>
+                          )}
                         </div>
                       </div>
                       <div data-card-mini style={s('position:absolute;inset:0;opacity:0;transition:opacity .55s ease,transform .6s cubic-bezier(.4,0,.15,1);will-change:opacity,transform;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;box-sizing:border-box;padding:30px 18px;text-align:center')}>
@@ -525,7 +528,7 @@ export default function Portfolio() {
               <h2 style={s('margin:0;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.02em;font-weight:800;color:#fff;line-height:1.05')}>Let&rsquo;s build something<br /><span style={s('background:linear-gradient(120deg,#9fc0ff,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent')}>resilient together.</span></h2>
               <p style={s('margin:0;font-size:1.08rem;color:rgba(210,220,255,.74);max-width:46ch')}>Open to conversations about cloud-native products, automation, and data-informed UX. Send a note, or reach me directly.</p>
               <div style={s('display:flex;flex-wrap:wrap;gap:10px;margin-top:4px')}>
-                <a href={D.mailto} style={s(primaryBtn)}>✉ Email</a>
+                <a href={D.mailto} style={s(primaryBtn)}>Email</a>
                 <a href={D.linkedin} target="_blank" rel="noreferrer" style={s('display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;color:#e8ecf7;border:1px solid rgba(255,255,255,.22);background:rgba(15,21,42,.55)')}>LinkedIn</a>
                 <a href={D.github} target="_blank" rel="noreferrer" style={s(linkStyle)}>GitHub</a>
                 <a href={D.resume} target="_blank" rel="noreferrer" style={s(linkStyle)}>Resume</a>
